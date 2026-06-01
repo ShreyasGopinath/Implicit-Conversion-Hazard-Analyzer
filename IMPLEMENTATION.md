@@ -1,12 +1,5 @@
 # Implementation Details (LLVM/Clang)
 
-> [!TIP]
-> **For Evaluators & Reviewers:** 
-> - If you are looking for **Installation & Setup Steps**, please refer to [`README.md`](file:///Users/shreyasgopinath/Desktop/CD Lab EL/README.md).
-> - If you are looking for **Empirical Benchmarking Data**, please refer to [`EVALUATION.md`](file:///Users/shreyasgopinath/Desktop/CD Lab EL/EVALUATION.md).
-> - If you are looking for **High-Level Design & Risk Architecture**, please refer to [`DESIGN.md`](file:///Users/shreyasgopinath/Desktop/CD Lab EL/DESIGN.md).
-
-
 The Implicit Conversion Hazard Analyzer backend is a robust C++ analyzer built heavily on LLVM and Clang's **LibTooling** architecture. 
 
 ## 1. The Clang AST Visitor Interface
