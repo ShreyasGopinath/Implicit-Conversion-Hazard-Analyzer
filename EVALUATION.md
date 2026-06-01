@@ -41,16 +41,48 @@ Implicit Conversion Hazard Analyzer features a real-world CVE correlation engine
 
 When executing the `/benchmark` command, the engine dynamically cross-references all findings against these CVE patterns (matching conversion types and contexts) to assign "High Confidence CVE Threat" tags to specific lines of code.
 
-## 4. How to Test
-You can replicate these exact evaluation metrics by running the interactive benchmark suite:
+## 4. How to Test & Replicate Benchmarks
+
+We have designed the evaluation engine to be fully reproducible. You can test and replicate our exact metrics through either our Interactive TUI or via direct Python scripts.
+
+### Method A: The Interactive TUI (Easiest)
+1. Start the analyzer dashboard:
 ```bash
 ./scripts/run.sh
 ```
-Inside the prompt, type:
-```
+2. Inside the prompt, type `/benchmark` to run the multi-project evaluation:
+```bash
 icha❯ /benchmark
 ```
-To view the side-by-side matrices, type:
-```
+3. To view the side-by-side matrices comparing our tool to Clang's baseline, type:
+```bash
 icha❯ /compare
+```
+
+### Method B: Direct Script Execution (For CI/CD or Manual Inspection)
+If you prefer to run the benchmarking framework directly without the TUI, you can use the underlying Python engine:
+```bash
+# 1. Ensure you have built the C++ binary first (see README.md)
+./scripts/build.sh
+
+# 2. Run the main benchmark script
+# This script reads from benchmarking/config/projects.json and evaluates all listed projects.
+python3 benchmarking/src/run_benchmark.py \
+    --config benchmarking/config/projects.json \
+    --icha-binary ./build/src/icha \
+    --output-dir benchmarking/results
+
+# 3. View the generated reports
+cat benchmarking/results/statistical_summary.txt
+cat benchmarking/results/executive_summary.txt
+```
+
+### Method C: Running Individual Test Suites
+To verify the core risk differentiation rules (like Context and Impact risk factors), run our specialized bash scripts:
+```bash
+# Run all GoogleTest C++ Backend Unit Tests
+./scripts/run_validation_tests.sh
+
+# Run the end-to-end Risk Differentiation Tests
+./scripts/test_risk_differentiation.sh
 ```

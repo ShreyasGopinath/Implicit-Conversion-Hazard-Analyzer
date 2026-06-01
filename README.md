@@ -5,19 +5,85 @@ The Implicit Conversion Hazard Analyzer is a highly advanced, production-grade C
 
 A narrowing conversion inside a standard assignment might be relatively harmless, but the *exact same* conversion inside an **array index** (memory context) or **loop condition** can lead to critical buffer overflows or infinite loops (e.g., CVE-2021-3156, CVE-2022-23521). Implicit Conversion Hazard Analyzer tracks the exact AST parent lineage (through declarations and statements) to isolate high-risk conversions and suggest safe fixes.
 
-## Prerequisites
-- **LLVM / Clang (LibTooling)**: `llvm@15` or equivalent.
-- **CMake**: `cmake` (>= 3.14).
-- **C++ Compiler**: A compiler supporting C++17/C++20.
-- **Python 3**: For the interactive TUI, dashboard, and evaluation engine.
-- **Python Dependencies**: Listed in `requirements-cli.txt` (`rich`, `prompt_toolkit`).
+## 1. Prerequisites & Environment Setup
 
-## How to Build
-To build the Clang C++ analyzer binary:
+Because this analyzer leverages the LLVM/Clang LibTooling C++ API, you must have the Clang development libraries installed. Below are the step-by-step instructions for your specific operating system.
+
+### macOS (Apple Silicon & Intel)
+The easiest way to install LLVM on macOS is via Homebrew.
 ```bash
+# 1. Install dependencies
+brew install llvm cmake python@3.11
+
+# 2. Set strict environment variables so CMake finds the Homebrew LLVM instead of Apple's default Clang
+export LLVM_DIR=$(brew --prefix llvm)/lib/cmake/llvm
+export Clang_DIR=$(brew --prefix llvm)/lib/cmake/clang
+export CC=$(brew --prefix llvm)/bin/clang
+export CXX=$(brew --prefix llvm)/bin/clang++
+```
+
+### Ubuntu / Debian Linux
+Use the official package manager to install LLVM 15 (or newer).
+```bash
+# 1. Install dependencies
+sudo apt-get update
+sudo apt-get install -y llvm-15 clang-15 libclang-15-dev cmake python3 python3-venv python3-pip
+
+# 2. Set environment variables
+export LLVM_DIR=/usr/lib/llvm-15/cmake
+export Clang_DIR=/usr/lib/cmake/clang-15
+export CC=clang-15
+export CXX=clang++-15
+```
+
+### Windows
+For Windows users, we highly recommend using **WSL (Windows Subsystem for Linux)** running Ubuntu, as Clang LibTooling natively interacts best in a POSIX environment.
+1. Open PowerShell and run: `wsl --install`
+2. Restart your computer and open the Ubuntu terminal.
+3. Follow the **Ubuntu / Debian Linux** instructions above.
+
+---
+
+## 2. Compilation & Build Instructions
+
+Once your environment variables are configured, you can manually build the C++ backend using CMake, or use our automated script.
+
+### Option A: The Automated Build Script
+```bash
+chmod +x scripts/build.sh
 ./scripts/build.sh
 ```
-This will create a `build/` directory and compile the `icha` binary inside `build/src/icha`.
+
+### Option B: Step-by-Step Manual CMake Build
+If you wish to configure the project manually (which is helpful for debugging or IDE setup):
+```bash
+# 1. Generate CMake build files
+cmake -S . -B build -DLLVM_DIR=$LLVM_DIR -DClang_DIR=$Clang_DIR
+
+# 2. Compile the analyzer and its subcomponents
+cmake --build build -j $(nproc) 
+
+# 3. Verify the build by running the C++ test suite
+ctest --test-dir build --output-on-failure
+```
+This will compile the `icha` binary inside the `build/src/` directory.
+
+---
+
+## 3. Python TUI Setup
+
+The Interactive Terminal User Interface (TUI) and HTML Dashboard require Python 3.
+```bash
+# 1. Create a virtual environment
+python3 -m venv .venv
+
+# 2. Activate it
+# On Mac/Linux/WSL:
+source .venv/bin/activate
+
+# 3. Install the required Python packages
+pip install -r requirements-cli.txt
+```
 
 ## How to Run
 
