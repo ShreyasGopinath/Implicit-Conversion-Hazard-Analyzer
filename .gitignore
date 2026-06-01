@@ -1,0 +1,41 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# Tool outputs and reports
+*.json
+!benchmarking/config/*.json
+report.html
+results/
+*.sarif
+*.txt
+!CMakeLists.txt
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ICHA Specific caches
+.cache/
+icha
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo

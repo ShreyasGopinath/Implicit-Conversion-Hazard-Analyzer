@@ -1,0 +1,76 @@
+{
+  "projects": [
+    {
+      "name": "sample_project",
+      "path": "testcases",
+      "description": "Sample C++ project containing specific conversion tests",
+      "source_files": [
+        "test_api_context.cpp",
+        "test_loop_context.cpp",
+        "test_memory_context.cpp",
+        "test_narrowing.cpp",
+        "test_sign_change.cpp"
+      ],
+      "exclude_patterns": []
+    },
+    {
+      "name": "validation_suite",
+      "path": "testcases",
+      "description": "Core context intelligence validation test suite",
+      "source_files": [
+        "api_context.c",
+        "assignment_context.c",
+        "branch_context.c",
+        "loop_context.c",
+        "memory_context.c",
+        "return_context.c"
+      ],
+      "exclude_patterns": []
+    },
+    {
+      "name": "sqlite_amalgamation",
+      "path": "oss_evaluation/sqlite-amalgamation-3450100",
+      "description": "Full SQLite Amalgamation (Large OSS Codebase)",
+      "source_files": [
+        "sqlite3.c"
+      ],
+      "exclude_patterns": []
+    },
+    {
+      "name": "redis_src",
+      "path": "oss_evaluation/redis/src",
+      "description": "Redis Source Code (Large OSS Codebase)",
+      "source_files": [],
+      "exclude_patterns": ["*.rb", "*.h", "*.sup", "*.sh", "*.def"]
+    },
+    {
+      "name": "libpng",
+      "path": "oss_evaluation/libpng",
+      "description": "Libpng (Large OSS Codebase)",
+      "source_files": [
+        "png.c",
+        "pngerror.c",
+        "pngget.c",
+        "pngmem.c",
+        "pngpread.c",
+        "pngread.c",
+        "pngrio.c",
+        "pngrtran.c",
+        "pngrutil.c",
+        "pngset.c",
+        "pngtrans.c",
+        "pngwio.c",
+        "pngwrite.c",
+        "pngwtran.c",
+        "pngwutil.c"
+      ],
+      "exclude_patterns": []
+    }
+  ],
+  "benchmark_settings": {
+    "location_tolerance": 2,
+    "minimum_cve_confidence": 0.3,
+    "enable_cve_correlation": true,
+    "parallel_analysis": false
+  }
+}
