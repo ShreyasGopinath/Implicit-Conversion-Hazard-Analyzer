@@ -35,7 +35,7 @@ Once inside the interactive `icha❯` prompt, you have access to powerful comman
 - `/compare`: Displays a side-by-side comparison matrix showing Implicit Conversion Hazard Analyzer's noise-reduction against the Clang compiler baseline.
 - `/test`: Runs the comprehensive test suite to prove the Context Intelligence risk differentiation.
 
-### Method 2: Direct CLI Commands (Automation/CI)
+### Method 2: Direct CLI Commands 
 You can directly invoke the compiled Clang LibTooling binary.
 
 **Standard Output (Terminal):**
