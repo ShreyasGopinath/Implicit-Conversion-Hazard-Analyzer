@@ -24,14 +24,10 @@ This test suite validates that ICHA correctly identifies different **context typ
 ### Run All Tests
 
 ```bash
-cd "/Users/shreyasgopinath/Desktop/CD Lab EL"
 ./run_validation_tests.sh
 ```
 
 ### Run Individual Tests
-
-```bash
-cd "/Users/shreyasgopinath/Desktop/CD Lab EL"
 
 # Test assignment context
 ./build/src/icha tests/validation/assignment_context.c --
@@ -91,12 +87,10 @@ cd "/Users/shreyasgopinath/Desktop/CD Lab EL"
 
 ## Validation Criteria
 
-For each test file, verify:
-
-1. ✅ **Correct Context Detection**: ICHA identifies the right context type
-2. ✅ **Appropriate Risk Score**: Context risk matches expected values
-3. ✅ **All Conversions Found**: No conversions missed
-4. ✅ **Correct Severity**: Severity matches risk level
+1.  **Correct Context Detection**: ICHA identifies the right context type
+2.  **Appropriate Risk Score**: Context risk matches expected values
+3.  **All Conversions Found**: No conversions missed
+4.  **Correct Severity**: Severity matches risk level
 
 ---
 
@@ -123,7 +117,7 @@ When you run a test, you should see output like:
 [MEDIUM] Implicit conversion detected
 File:       tests/validation/loop_context.c:11
 Conversion: double → int
-Context:    LOOP_CONTEXT          ← Verify this matches!
+Context:    LOOP_CONTEXT          
 Risk Score: 70/100
 
 Risk Breakdown:
@@ -134,56 +128,3 @@ Risk Breakdown:
 ```
 
 ---
-
-## Troubleshooting
-
-### No findings shown
-- Make sure you're in the ICHA directory
-- Try: `./build/src/icha --icha-min-severity=0 tests/validation/FILE.c --`
-
-### Wrong context detected
-- This indicates a bug in ICHA's context detection
-- Check the source code in `src/context/`
-- File an issue with details
-
-### Compilation errors
-- The test files are designed to compile without includes
-- If you see errors, check the file syntax
-
----
-
-## Adding New Tests
-
-To add a new validation test:
-
-1. Create a new `.c` file in `tests/validation/`
-2. Add clear comments explaining expected behavior
-3. Include multiple test cases for the context
-4. Update this README with expected results
-5. Add to `run_validation_tests.sh`
-
----
-
-## Notes
-
-- These tests use **simple, self-contained code** to avoid compilation issues
-- Each test file is **independent** and can be run separately
-- Tests are designed to be **deterministic** - same results every time
-- Comments in each file explain what ICHA should detect
-
----
-
-## Quick Verification
-
-Run this to verify all tests work:
-
-```bash
-cd "/Users/shreyasgopinath/Desktop/CD Lab EL"
-for file in tests/validation/*.c; do
-    echo "Testing: $file"
-    ./build/src/icha "$file" -- | grep -E "(Total Findings|Context)" | head -2
-    echo "---"
-done
-```
-
-Expected: Each file should show findings with the correct context type.
