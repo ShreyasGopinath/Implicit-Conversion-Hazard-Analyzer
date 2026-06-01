@@ -28,17 +28,17 @@ A set of 6 test files that validate ICHA's ability to detect implicit conversion
 ## Expected Results
 
 All tests should detect conversions and show:
-- ✅ Total findings count
-- ✅ Risk scores (0-100)
-- ✅ Severity levels
-- ✅ Fix suggestions
+-  Total findings count
+-  Risk scores (0-100)
+-  Severity levels
+-  Fix suggestions
 
 ## What This Validates
 
-✅ ICHA detects implicit conversions  
-✅ Risk scoring works  
-✅ Fix suggestions are generated  
-✅ Multiple output formats work  
+ ICHA detects implicit conversions  
+ Risk scoring works  
+ Fix suggestions are generated  
+ Multiple output formats work  
 
 ## Documentation
 
