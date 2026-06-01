@@ -1,7 +1,7 @@
 # Implicit Conversion Hazard Analyzer
 
 ## What is Implicit Conversion Hazard Analyzer?
-The Implicit Conversion Hazard Analyzer is a highly advanced, production-grade Clang static analysis tool for C/C++ code. While standard compilers (like GCC/Clang with `-Wconversion`) indiscriminately flag all implicit conversions regardless of context (resulting in extreme noise), Implicit Conversion Hazard Analyzer uses advanced **Context Intelligence** to mathematically score the actual *danger* of a conversion. 
+The Implicit Conversion Hazard Analyzer is a highly advanced Clang static analysis tool for C/C++ code. While standard compilers (like GCC/Clang with `-Wconversion`) indiscriminately flag all implicit conversions regardless of context (resulting in extreme noise), Implicit Conversion Hazard Analyzer uses advanced **Context Intelligence** to mathematically score the actual *danger* of a conversion. 
 
 A narrowing conversion inside a standard assignment might be relatively harmless, but the *exact same* conversion inside an **array index** (memory context) or **loop condition** can lead to critical buffer overflows or infinite loops (e.g., CVE-2021-3156, CVE-2022-23521). Implicit Conversion Hazard Analyzer tracks the exact AST parent lineage (through declarations and statements) to isolate high-risk conversions and suggest safe fixes.
 
