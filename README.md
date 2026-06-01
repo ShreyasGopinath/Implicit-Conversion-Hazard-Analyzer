@@ -69,7 +69,7 @@ pip install -r requirements-cli.txt
 Implicit Conversion Hazard Analyzer offers two methods of operation: an **Interactive TUI** (highly recommended) and **Direct CLI Commands**.
 
 ### Method 1: The Interactive TUI & HTML Dashboard (Recommended)
-We provide an advanced, Claude-CLI inspired Terminal User Interface.
+We provide an advanced Terminal User Interface.
 ```bash
 ./scripts/run.sh
 ```
