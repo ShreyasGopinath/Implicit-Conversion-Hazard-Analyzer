@@ -30,21 +30,32 @@ This test suite validates that ICHA correctly identifies different **context typ
 ### Run Individual Tests
 
 # Test assignment context
+```bash
 ./build/src/icha tests/validation/assignment_context.c --
+```
 
 # Test loop context
+```bash
 ./build/src/icha tests/validation/loop_context.c --
+```
 
 # Test memory context
+```bash
 ./build/src/icha tests/validation/memory_context.c --
+```
 
 # Test branch context
+```bash
 ./build/src/icha tests/validation/branch_context.c --
+```
 
 # Test API context
+```bash
 ./build/src/icha tests/validation/api_context.c --
+```
 
 # Test return context
+```bash
 ./build/src/icha tests/validation/return_context.c --
 ```
 
