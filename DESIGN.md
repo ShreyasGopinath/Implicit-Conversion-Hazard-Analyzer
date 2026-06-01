@@ -1,12 +1,5 @@
 # System Design & Architecture
 
-> [!TIP]
-> **For Evaluators & Reviewers:** 
-> - If you are looking for **Installation & Setup Steps**, please refer to [`README.md`](file:///Users/shreyasgopinath/Desktop/CD Lab EL/README.md).
-> - If you are looking for **Empirical Benchmarking Data**, please refer to [`EVALUATION.md`](file:///Users/shreyasgopinath/Desktop/CD Lab EL/EVALUATION.md).
-> - If you are looking for **Clang/LLVM C++ Code Specifics**, please refer to [`IMPLEMENTATION.md`](file:///Users/shreyasgopinath/Desktop/CD Lab EL/IMPLEMENTATION.md).
-
-
 ## Core Approach
 The objective of Implicit Conversion Hazard Analyzer is to identify and mitigate implicit conversion hazards in C/C++ by computing a Context-Aware Risk Score. Rather than identifying *all* type-cast operations like standard compiler warnings, the system maps the semantic *environment* of the cast to isolate genuine security threats.
 
