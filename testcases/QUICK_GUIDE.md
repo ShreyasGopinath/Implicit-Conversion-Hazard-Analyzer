@@ -1,13 +1,9 @@
 # Quick Guide: Using the Validation Test Suite
 
-## What It Is
 
 A set of 6 test files that validate ICHA's ability to detect implicit conversions in different contexts.
 
 ## Quick Start
-
-```bash
-cd "/Users/shreyasgopinath/Desktop/CD Lab EL"
 
 # Run all tests
 ./run_validation_tests.sh
